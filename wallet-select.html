@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Wallet - AROGYTA</title>
+    <meta name="description" content="Connect your wallet to access AROGYTA's blockchain-secured platform.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .wallet-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .wallet-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .wallet-card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 600px;
+            padding: var(--spacing-2xl);
+            background: rgba(18, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .wallet-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .wallet-logo {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .wallet-title {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .wallet-subtitle {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .wallet-options {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .wallet-option {
+            padding: var(--spacing-xl);
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .wallet-option:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--color-accent-purple);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .wallet-option-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .wallet-option-icon svg {
+            width: 36px;
+            height: 36px;
+            color: white;
+        }
+
+        .wallet-option-content {
+            flex: 1;
+        }
+
+        .wallet-option-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .wallet-option-description {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .wallet-option-badge {
+            background: var(--gradient-success);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .wallet-info {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .wallet-info-title {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--color-accent-purple);
+        }
+
+        .wallet-info-title svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .wallet-info-text {
+            color: var(--color-text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            text-align: center;
+        }
+
+        .back-link a {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-link a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .wallet-card {
+                padding: var(--spacing-xl);
+            }
+
+            .wallet-option {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wallet-container">
+        <div class="wallet-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+
+        <div class="wallet-card">
+            <div class="wallet-header">
+                <h1 class="wallet-logo">AROGYTA</h1>
+                <h2 class="wallet-title">Connect Your Wallet</h2>
+                <p class="wallet-subtitle">Choose how you want to secure your documents</p>
+            </div>
+
+            <div class="wallet-info">
+                <div class="wallet-info-title">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 16V12M12 8H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Why do I need a wallet?
+                </div>
+                <p class="wallet-info-text">
+                    Your wallet secures your documents on the blockchain. MetaMask provides full blockchain features,
+                    while Guest Wallet is perfect for testing.
+                </p>
+            </div>
+
+            <div class="wallet-options">
+                <!-- MetaMask Option -->
+                <div class="wallet-option" id="metamaskOption">
+                    <div class="wallet-option-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M3.27002 6.96L12 12.01L20.73 6.96M12 22.08V12" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="wallet-option-content">
+                        <div class="wallet-option-title">MetaMask Wallet</div>
+                        <div class="wallet-option-description">
+                            Connect with MetaMask for full blockchain features and real Ethereum transactions
+                        </div>
+                    </div>
+                    <div class="wallet-option-badge">Recommended</div>
+                </div>
+
+                <!-- Guest Wallet Option -->
+                <div class="wallet-option" id="guestOption">
+                    <div class="wallet-option-icon" style="background: var(--gradient-accent);">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="wallet-option-content">
+                        <div class="wallet-option-title">Guest Wallet</div>
+                        <div class="wallet-option-description">
+                            Try AROGYTA with a temporary wallet - perfect for testing and demos
+                        </div>
+                    </div>
+                    <div class="wallet-option-badge" style="background: var(--gradient-accent);">For Testing</div>
+                </div>
+            </div>
+
+            <div class="back-link">
+                <a href="signin.html">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    Back to Sign In
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="blockchain.js"></script>
+    <script>
+        // Check if user is authenticated
+        const isAuthenticated = localStorage.getItem('isAuthenticated');
+        if (isAuthenticated !== 'true') {
+            window.location.href = 'signin.html';
+        }
+
+        // MetaMask Option
+        document.getElementById('metamaskOption').addEventListener('click', async () => {
+            try {
+                const walletAddress = await WalletManager.connectWallet();
+
+                if (walletAddress) {
+                    localStorage.setItem('walletAddress', walletAddress);
+                    localStorage.setItem('walletType', 'metamask');
+
+                    // Show success message
+                    alert(`MetaMask connected!\nWallet: ${walletAddress.substring(0, 6)}...${walletAddress.substring(38)}`);
+
+                    // Redirect to dashboard
+                    window.location.href = 'dashboard.html';
+                }
+            } catch (error) {
+                console.error('MetaMask connection error:', error);
+                alert('Failed to connect MetaMask. Please try again or use Guest Wallet.');
+            }
+        });
+
+        // Guest Wallet Option
+        document.getElementById('guestOption').addEventListener('click', () => {
+            const guestAddress = WalletManager.createGuestWallet();
+
+            localStorage.setItem('walletAddress', guestAddress);
+            localStorage.setItem('walletType', 'guest');
+
+            // Show info message
+            alert(`Guest Wallet Created!\nAddress: ${guestAddress.substring(0, 6)}...${guestAddress.substring(38)}\n\nNote: This is a temporary wallet for testing purposes.`);
+
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+
+</html>
