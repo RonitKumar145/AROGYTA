@@ -143,6 +143,27 @@ window.addEventListener('load', () => {
 });
 
 // ===================================
+// Authentication State Check
+// ===================================
+window.addEventListener('load', () => {
+    const isAuthenticated = localStorage.getItem('isAuthenticated');
+    const signinBtn = document.querySelector('.signin-btn');
+
+    // Only change "Sign In" to "Dashboard" if it's NOT the logout button
+    if (isAuthenticated === 'true' && signinBtn && signinBtn.id !== 'logoutBtn') {
+        // User is logged in, change "Sign In" to "Dashboard"
+        signinBtn.href = 'dashboard.html';
+        signinBtn.innerHTML = `
+            <svg class="signin-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" 
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Dashboard</span>
+        `;
+    }
+});
+
+// ===================================
 // Prevent transitions on window resize
 // ===================================
 let resizeTimer;
